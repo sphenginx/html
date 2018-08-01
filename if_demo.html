@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>if test</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<pre>
+function checkValue(obj)
+{
+	var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
+    if(!obj.ci){
+        emsg('请选择城市！');return false;
+    }else if(obj.sm){
+    	if (!reg.test(obj.sm)) {
+    		emsg('请选择开始时间！');return false;
+    	}
+    }else if(obj.tm){
+    	if (!reg.test(obj.tm)) {
+    		emsg('请选择结束时间！');return false;
+    	}
+    }else if(!obj.ha){
+        var start = obj.sm.split('-');
+        var end = obj.tm.split('-');
+        var start_count = parseInt(start[0]) * 12 + parseInt(start[1]);
+        var end_count = parseInt(end[0]) * 12 + parseInt(end[1]);
+        if (end_count <= start_count) {
+            emsg('结束时间要大于开始时间！');return false;
+        } else if (end_count - start_count > 12) {
+            emsg('时间跨度不能大于12个月！');return false;
+        }
+    }
+
+    emsg('check completed!');
+}
+
+function emsg(msg)
+{
+	var _msg = "<p>"+msg+"</p>";
+	document.getElementById('result').append(_msg);
+}
+
+obj = {ci: '青岛', sm: '2016-3', tm: '2018-7', ha: ''}
+checkValue(obj);
+
+注意：这里 else if 里面 嵌套 if。 代码执行到这里会直接跳到最后的地方……
+</pre>
+
+<div id="result">
+</div>
+<script type="text/javascript">
+function checkValue(obj)
+{
+	var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
+    if(!obj.ci){
+        emsg('请选择城市！');return false;
+    }else if(obj.sm){
+    	if (!reg.test(obj.sm)) {
+    		emsg('请选择开始时间！');return false;
+    	}
+    }else if(obj.tm){
+    	if (!reg.test(obj.tm)) {
+    		emsg('请选择结束时间！');return false;
+    	}
+    }else if(!obj.ha){
+        var start = obj.sm.split('-');
+        var end = obj.tm.split('-');
+        var start_count = parseInt(start[0]) * 12 + parseInt(start[1]);
+        var end_count = parseInt(end[0]) * 12 + parseInt(end[1]);
+        if (end_count <= start_count) {
+            emsg('结束时间要大于开始时间！');return false;
+        } else if (end_count - start_count > 12) {
+            emsg('时间跨度不能大于12个月！');return false;
+        }
+    }
+
+    emsg('check completed!');
+}
+
+function emsg(msg)
+{
+	var _msg = "<p>"+msg+"</p>";
+	document.getElementById('result').append(_msg);
+}
+
+obj = {ci: '青岛', sm: '2016-3', tm: '2018-7', ha: ''}
+checkValue(obj);
+</script>
+</body>
+</html>
