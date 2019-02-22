@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>if test</title>
-	<meta charset="utf-8">
+    <title>if test</title>
+    <meta charset="utf-8">
 </head>
 <body>
 <pre>
 function checkValue(obj)
 {
-	var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
+    var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
     if(!obj.ci){
         emsg('请选择城市！');return false;
     }else if(obj.sm){
-    	if (!reg.test(obj.sm)) {
-    		emsg('请选择开始时间！');return false;
-    	}
+        if (!reg.test(obj.sm)) {
+            emsg('请选择开始时间！');return false;
+        }
     }else if(obj.tm){
-    	if (!reg.test(obj.tm)) {
-    		emsg('请选择结束时间！');return false;
-    	}
+        if (!reg.test(obj.tm)) {
+            emsg('请选择结束时间！');return false;
+        }
     }else if(!obj.ha){
         var start = obj.sm.split('-');
         var end = obj.tm.split('-');
@@ -36,8 +36,8 @@ function checkValue(obj)
 
 function emsg(msg)
 {
-	var _msg = "<p>"+msg+"</p>";
-	document.getElementById('result').append(_msg);
+    var _msg = "<p>"+msg+"</p>";
+    document.getElementById('result').append(_msg);
 }
 
 obj = {ci: '青岛', sm: '2016-3', tm: '2018-7', ha: ''}
@@ -51,17 +51,17 @@ checkValue(obj);
 <script type="text/javascript">
 function checkValue(obj)
 {
-	var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
+    var reg = new RegExp(/^\d{4}\-\d{1,2}$/);
     if(!obj.ci){
         emsg('请选择城市！');return false;
     }else if(obj.sm){
-    	if (!reg.test(obj.sm)) {
-    		emsg('请选择开始时间！');return false;
-    	}
+        if (!reg.test(obj.sm)) {
+            emsg('请选择开始时间！');return false;
+        }
     }else if(obj.tm){
-    	if (!reg.test(obj.tm)) {
-    		emsg('请选择结束时间！');return false;
-    	}
+        if (!reg.test(obj.tm)) {
+            emsg('请选择结束时间！');return false;
+        }
     }else if(!obj.ha){
         var start = obj.sm.split('-');
         var end = obj.tm.split('-');
@@ -79,8 +79,8 @@ function checkValue(obj)
 
 function emsg(msg)
 {
-	var _msg = "<p>"+msg+"</p>";
-	document.getElementById('result').append(_msg);
+    var _msg = "<p>"+msg+"</p>";
+    document.getElementById('result').append(_msg);
 }
 
 obj = {ci: '青岛', sm: '2016-3', tm: '2018-7', ha: ''}

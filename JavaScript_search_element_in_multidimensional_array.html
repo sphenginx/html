@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>if test</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<div>
+  近期打算实现 <font color="blue">在多维数组中查找某元素是否存在的功能</font>, 但是在网上查找资料时，都是一维数组，于是自己动手实现了以下，期望对后来者有所帮助（可直接copy至 控制台 使用）：
+</div>
+<pre>
+var _inArrayFlag = false;
+var in_array = function(search, array){
+  for(var i in array){
+    if(_inArrayFlag){
+       break;
+    }
+    //如果元素是数组 或者 对象，则递归判断
+    if (Object.prototype.toString.call(array[i]).indexOf('Object') > -1 || Object.prototype.toString.call(array[i]).indexOf('Array') > -1) {
+       _inArrayFlag = in_array(search, array[i]);
+    } else {
+      if(array[i] == search){
+        _inArrayFlag = true;
+        break;
+      }
+    } 
+  }
+  if(_inArrayFlag){
+    _inArrayFlag = false;
+    return true;
+  }else{
+    return null;
+  }
+}
+
+var _arr = [{a: [1, 2, 3]}, 4, 5];
+console.log(in_array(1, _arr));
+console.log(in_array(4, _arr));
+console.log(in_array(6, _arr));
+
+</pre>
+</body>
+</html>
+<script type="text/javascript">
+var _inArrayFlag = false;
+var in_array = function(search, array){
+  for(var i in array){
+    if(_inArrayFlag){
+       break;
+    }
+    //如果元素是数组 或者 对象，则递归判断
+    if (Object.prototype.toString.call(array[i]).indexOf('Object') > -1 || Object.prototype.toString.call(array[i]).indexOf('Array') > -1) {
+       _inArrayFlag = in_array(search, array[i]);
+    } else {
+      if(array[i] == search){
+        _inArrayFlag = true;
+        break;
+      }
+    } 
+  }
+  if(_inArrayFlag){
+    _inArrayFlag = false;
+    return true;
+  }else{
+    return null;
+  }
+}
+
+var _arr = [{a: [1, 2, 3]}, 4, 5];
+console.log(in_array(1, _arr));
+console.log(in_array(4, _arr));
+console.log(in_array(6, _arr));
+</script>
